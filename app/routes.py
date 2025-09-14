@@ -85,3 +85,23 @@ def edit_task(task_id):
     
     return render_template("edit_task.html", form=form, task=task)
 
+
+
+@app.route("/task/<int:task_id>/delete", methods=["POST"])
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    flash("Task deleted.", "info")
+    return redirect(url_for("index"))
+
+
+
+@app.route("/task/<int:task_id>/toggle", methods=["POST"])
+def toggle_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    task.completed = not task.completed
+    db.session.commit()
+    status = "completed" if task.completed else "incomplete"
+    flash(f"Task marked {status}.", "success")
+    return redirect(url_for("index"))
