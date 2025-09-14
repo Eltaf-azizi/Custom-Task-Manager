@@ -105,3 +105,21 @@ def toggle_task(task_id):
     status = "completed" if task.completed else "incomplete"
     flash(f"Task marked {status}.", "success")
     return redirect(url_for("index"))
+
+
+
+@app.route("/categories", methods=["GET", "POST"])
+def categories():
+    form = CategoryForm()
+    categories = Category.query.order_by(Category.name).all()
+    if form.validate_on_submit():
+        name = form.name.data.strip()
+        if Category.query.filter_by(name=name).first():
+            flash("Category already exists.", "warning")
+        else:
+            cat = Category(name=name)
+            db.session.add(cat)
+            db.session.commit()
+            flash("Category added.", "success")
+        return redirect(url_for("categories"))
+    return render_template("categories.html", categories=categories, form=form)
