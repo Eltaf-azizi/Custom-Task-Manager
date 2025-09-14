@@ -123,3 +123,17 @@ def categories():
             flash("Category added.", "success")
         return redirect(url_for("categories"))
     return render_template("categories.html", categories=categories, form=form)
+
+
+
+
+@app.route("/category/<int:cat_id>/delete", methods=["POST"])
+def delete_category(cat_id):
+    category = Category.query.get_or_404(cat_id)
+    # deleting category will also delete tasks because of cascade in relationship
+    db.session.delete(category)
+    db.session.commit()
+    flash("Category deleted (and its tasks).", "info")
+    return redirect(url_for("categories"))
+
+    
