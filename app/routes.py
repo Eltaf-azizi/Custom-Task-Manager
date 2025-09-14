@@ -40,4 +40,26 @@ def add_task():
     form.category.choices = [(0, "No category")] + [(c.id, c.name) for c in categories]
     if form.validate_on_submit():
         category_id = form.category.data or None
+        if category_id == 0:
+            category_id = None
+        task = Task(
+            title=form.title.data.strip(),
+            description=form.description.data.strip() or None,
+            deadline=form.deadline.data,
+            completed=form.completed.data,
+            category_id=category_id
+        )
+        db.session.add(task)
+        db.session.commit()
+        flash("Task added.", "success")
+        return redirect(url_for("index"))
+    return render_template("add_task.html", form=form)
+
+
+
+
+@app.route("/task/<int:task_id>/edit", methods=["GET", "POST"])
+def edit_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    form = TaskForm()
 
