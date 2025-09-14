@@ -17,4 +17,27 @@ from flask import current_app as app  # using factory pattern's app context
 def index():
     # filter by category or show all
     category_id = request.args.get("category", type=int)
-    
+    q = request.args.get("q", "", type=str).strip()
+    if category_id:
+        tasks_query = Task.query.filter_by(category_id=category_id)
+    else:
+        tasks_query = Task.query
+
+    if q:
+        tasks_query = tasks_query.filter(Task.title.ilike(f"%{q}%"))
+
+    tasks = tasks_query.order_by(Task.deadline.asc().nulls_last(), Task.created_at.desc()).all()
+    categories = Category.query.order_by(Category.name).all()
+    return render_template("index.html", tasks=tasks, categories=categories, selected_category=category_id, q=q)
+
+
+
+@app.route("/task/add", methods=["GET", "POST"])
+def add_task():
+    form = TaskForm()
+    # populate category choices (id, name), include empty option
+    categories = Category.query.order_by(Category.name).all()
+    form.category.choices = [(0, "No category")] + [(c.id, c.name) for c in categories]
+    if form.validate_on_submit():
+        category_id = form.category.data or None
+
