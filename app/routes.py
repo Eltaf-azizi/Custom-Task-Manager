@@ -62,4 +62,26 @@ def add_task():
 def edit_task(task_id):
     task = Task.query.get_or_404(task_id)
     form = TaskForm()
+    categories = Category.query.order_by(Category.name).all()
+    form.category.choices = [(0, "No category")] + [(c.id, c.name) for c in categories]
+    
+    if request.method == "GET":
+        form.title.data = task.title
+        form.description.data = task.description
+        form.deadline.data = task.deadline
+        form.completed.data = task.completed
+        form.category.data = task.category_id or 0
+
+    if form.validate_on_submit():
+        task.title = form.title.data.strip()
+        task.description = form.description.data.strip() or None
+        task.deadline = form.deadline.data
+        task.completed = form.completed.data
+        cid = form.category.data
+        task.category_id = None if cid == 0 else cid
+        db.session.commit()
+        flash("Task updated.", "success")
+        return redirect(url_for("index"))
+    
+    return render_template("edit_task.html", form=form, task=task)
 
