@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Tasks - Task Manager{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="m-0">Tasks</h2>
+  <div>
+    <a class="btn btn-outline-primary" href="{{ url_for('add_task') }}">+ Add Task</a>
+  </div>
+</div>
+
+{% else %}
+  <p class="text-muted">No tasks yet. <a href="{{ url_for('add_task') }}">Add your first task</a>.</p>
+{% endif %}
+{% endblock %}
