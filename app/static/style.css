@@ -36,3 +36,31 @@ nav a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+/* Headings */
+h1, h2, h3 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list li {
+    background: #f0f4f8;
+    margin: 8px 0;
+    padding: 12px 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
