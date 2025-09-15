@@ -23,6 +23,27 @@
         {% endfor %}
       </div>
 
+      <div class="mb-3">
+        {{ form.deadline.label(class="form-label") }}
+        {{ form.deadline(class="form-control", placeholder="YYYY-MM-DD") }}
+        {% for err in form.deadline.errors %}
+          <div class="text-danger small">{{ err }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="mb-3">
+        {{ form.category.label(class="form-label") }}
+        {{ form.category(class="form-select") }}
+      </div>
+
+      <div class="form-check mb-3">
+        {{ form.completed(class="form-check-input") }}
+        {{ form.completed.label(class="form-check-label") }}
+      </div>
+
+      <button class="btn btn-primary" type="submit">Create</button>
+      <a class="btn btn-link" href="{{ url_for('index') }}">Cancel</a>
+      
       
     </form>
   </div>
