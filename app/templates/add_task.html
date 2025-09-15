@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Add Task - Task Manager{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h3>Add Task</h3>
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
