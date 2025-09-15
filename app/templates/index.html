@@ -8,6 +8,28 @@
   </div>
 </div>
 
+<form class="row g-2 mb-3" method="get" action="{{ url_for('index') }}">
+  <div class="col-sm-6 col-md-4">
+    <input class="form-control" name="q" placeholder="Search title..." value="{{ q or '' }}" />
+  </div>
+  <div class="col-sm-4 col-md-3">
+    <select class="form-select" name="category" onchange="this.form.submit()">
+      <option value="">All categories</option>
+      {% for c in categories %}
+        <option value="{{ c.id }}" {% if selected_category == c.id %}selected{% endif %}>{{ c.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-secondary" type="submit">Filter</button>
+  </div>
+</form>
+
+{% if tasks %}
+  <div class="list-group">
+    {% for t in tasks %}
+    {% endfor %}
+  </div>
 {% else %}
   <p class="text-muted">No tasks yet. <a href="{{ url_for('add_task') }}">Add your first task</a>.</p>
 {% endif %}
