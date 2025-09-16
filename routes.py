@@ -37,3 +37,23 @@ def add_task():
 def edit_task(task_id):
     task = Task.query.get_or_404(task_id)
     categories = Category.query.all()
+
+    if request.method == "POST":
+        task.title = request.form["title"]
+        task.description = request.form.get("description")
+        deadline = request.form.get("deadline")
+        task.deadline = datetime.strptime(deadline, "%Y-%m-%d") if deadline else None
+        task.category_id = request.form.get("category") or None
+        task.completed = "completed" in request.form
+        db.session.commit()
+        return redirect(url_for("index"))
+
+    return render_template("edit_task.html", task=task, categories=categories)
+
+
+@app.route("/delete-task/<int:task_id>")
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for("index"))
