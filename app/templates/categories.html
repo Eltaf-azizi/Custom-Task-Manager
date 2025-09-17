@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Categories</h1>
+
+<form method="POST">
+    <label for="name">New Category</label>
+    <input type="text" name="name" required>
+    <button type="submit" class="btn btn-primary">Add Category</button>
+</form>
+
+<ul class="category-list">
+    {% for cat in categories %}
+    <li>
+        {{ cat.name }}
+        <a href="{{ url_for('delete_category', category_id=cat.id) }}" class="btn btn-danger">Delete</a>
+    </li>
+    {% else %}
+    <p>No categories yet.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
