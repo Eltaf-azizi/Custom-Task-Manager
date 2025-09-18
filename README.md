@@ -69,3 +69,16 @@ python run.py
 ```
 http://127.0.0.1:5000/
 ```
+
+
+🎯 Why I Built This
+
+I wanted to build something practical while practicing the fundamentals:
+
+ - How to design a project structure
+ - How Flask works with SQLite
+ - How to perform CRUD operations
+ - How to make a simple front end look clean with CSS
+
+This project might look simple, but for me it was a big step toward learning how real applications are built.
+
