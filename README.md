@@ -17,3 +17,28 @@ The goal of this project was simple:
  - Mark tasks as completed
  - Delete tasks or categories
  - Simple, clean UI with custom CSS
+
+
+## Project Structure
+
+    custom-task-manager/
+    ├── README.md                 # Project documentation
+    ├── requirements.txt          # Dependencies
+    ├── .gitignore                # Ignore venv, db files, cache
+    ├── config.py                 # App configuration
+    ├── run.py                    # Entry point
+    ├── instance/                 # SQLite DB stored here
+    │   └── taskmanager.db
+    └── app/
+        ├── __init__.py           # App factory + DB init
+        ├── models.py             # Task + Category models
+        ├── routes.py             # CRUD routes
+        ├── templates/            # HTML templates
+        │   ├── base.html
+        │   ├── index.html
+        │   ├── add_task.html
+        │   ├── edit_task.html
+        │   └── categories.html
+        └── static/               # CSS + JS
+            ├── style.css
+            └── script.js
