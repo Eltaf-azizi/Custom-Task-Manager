@@ -91,3 +91,13 @@ This project is open source under the MIT License. Feel free to use it, learn fr
 
 
 **⚡ Written by me, Altaf Hussain** — as part of my learning journey in Python, Flask, and web development.
+
+## 🙌 Contributing
+
+ - Contributions are welcome!
+ - Fork the project
+ - Create a new branch (`feature/awesome-feature`)
+ - Commit your changes
+ - Open a Pull Request
+ - 
+<h3 align="center">Happy Coding!</h3>
