@@ -83,3 +83,11 @@ I wanted to build something practical while practicing the fundamentals:
 
 This project might look simple, but for me it was a big step toward learning how real applications are built.
 
+
+## 📜 License
+
+This project is open source under the MIT License. Feel free to use it, learn from it, or even improve it.
+
+
+
+**⚡ Written by me, Altaf Hussain** — as part of my learning journey in Python, Flask, and web development.
