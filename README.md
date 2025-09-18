@@ -42,3 +42,30 @@ The goal of this project was simple:
         └── static/               # CSS + JS
             ├── style.css
             └── script.js
+
+
+## ⚙️ Setup & Installation
+
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/custom-task-manager.git
+cd custom-task-manager
+```
+
+2. Create a virtual environment and install dependencies:
+```
+python -m venv venv
+source venv/bin/activate   # On Linux/Mac
+venv\Scripts\activate      # On Windows
+pip install -r requirements.txt
+```
+
+3. Run the app:
+```
+python run.py
+```
+
+4. Open in browser:
+```
+http://127.0.0.1:5000/
+```
