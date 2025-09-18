@@ -1,23 +1,24 @@
 <h1 align="center">Custom-Task-Manager</h1>
 
 
-This is my first full CRUD web application built with Flask and SQLite.
-I created it as part of my learning journey to understand how to structure real projects, connect a database, and build something practical that I can use.
-
-The goal of this project was simple:
-
-👉 Learn how to create, read, update, and delete (CRUD) data in a real app.
-
+A lightweight web-based task management system built with Flask and SQLite. This project is designed to help me (and anyone who uses it) learn and practice full-stack development concepts while creating something useful.
 
 ## 🚀 Features
 
- - Add new tasks with deadlines
- - Organize tasks by categories
- - Edit and update tasks anytime
- - Mark tasks as completed
- - Delete tasks or categories
- - Simple, clean UI with custom CSS
+ - Add, edit, and delete tasks
+ - Organize tasks into categories
+ - Mark tasks as complete or incomplete
+ - View tasks in a clean, simple interface
+ - Persistent storage using SQLite
+ - Responsive design with custom CSS
 
+
+🛠️ Tech Stack
+
+ - Backend: Flask (Python)
+ - Database: SQLite with SQLAlchemy ORM
+ - Frontend: HTML, Jinja2 templates, CSS, JavaScript
+ - Form Handling: Flask-WTF (for validation)
 
 ## Project Structure
 
